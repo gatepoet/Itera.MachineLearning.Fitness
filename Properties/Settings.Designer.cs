@@ -22,5 +22,15 @@ namespace Itera.MachineLearning.Fitness.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://eklima.met.no/metdata/MetDataService")]
+        public string Itera_MachineLearning_Fitness_no_met_eklima_MetDataService {
+            get {
+                return ((string)(this["Itera_MachineLearning_Fitness_no_met_eklima_MetDataService"]));
+            }
+        }
     }
 }

@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="numl">
       <HintPath>..\..\Itera.MachineLearning.Fitness\packages\numl.0.7.13\lib\net40\numl.dll</HintPath>
@@ -40,6 +41,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Services" />
@@ -51,18 +58,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calendar.cs" />
-    <Compile Include="OpenWeatherMap\Calc.cs" />
-    <Compile Include="OpenWeatherMap\DataPoint.cs" />
-    <Compile Include="OpenWeatherMap\HistoricalWeatherData.cs" />
-    <Compile Include="OpenWeatherMap\HistoricalWeatherResponse.cs" />
-    <Compile Include="OpenWeatherMap\Main.cs" />
-    <Compile Include="OpenWeatherMap\DateTimeConverter.cs" />
-    <Compile Include="OpenWeatherMap\Wind.cs" />
+    <Compile Include="CalendarExtensions.cs" />
+    <Compile Include="Services\ICalendarData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IWeatherDataCollection.cs" />
+    <Compile Include="Services\SimpleWeatherDataCollection.cs" />
+    <Compile Include="Services\StateOfGround.cs" />
+    <Compile Include="Services\SimpleWeatherData.cs" />
+    <Compile Include="Services\WeatherDataCollection.cs" />
+    <Compile Include="Services\WeatherDataExtensions.cs" />
+    <Compile Include="Services\WeatherDataService.cs" />
+    <Compile Include="WeatherData.cs" />
+    <Compile Include="Web References\no.met.eklima\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -72,8 +87,31 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="TestData\oslo.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="Web References\no.met.eklima\MetDataService.wsdl" />
+    <None Include="Web References\no.met.eklima\no_met_metdata_CountyTypes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\no.met.eklima\no_met_metdata_ElementProperties.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\no.met.eklima\no_met_metdata_FlagProperties.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\no.met.eklima\no_met_metdata_Metdata.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\no.met.eklima\no_met_metdata_PrecipitationTypes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\no.met.eklima\no_met_metdata_StationProperties.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\no.met.eklima\no_met_metdata_TimeSerieTypes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\no.met.eklima\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -83,7 +121,20 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="TestData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://eklima.met.no/metdata/MetDataService%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\no.met.eklima\</RelPath>
+      <UpdateFromURL>http://eklima.met.no/metdata/MetDataService%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Itera_MachineLearning_Fitness_no_met_eklima_MetDataService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

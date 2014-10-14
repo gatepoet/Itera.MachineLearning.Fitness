@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://no/met/metdata/MetDataService.wsdl" xmlns:ns1="http://no.met.metdata/IMetDataService.xsd" name="MetDataService" targetNamespace="http://no/met/metdata/MetDataService.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://no.met.metdata/IMetDataService.xsd">
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_Metdata">
+        <xsd:all>
+          <xsd:element name="created" type="xsd:dateTime" />
+          <xsd:element name="type" type="xsd:string" />
+          <xsd:element name="timeStamp" type="ns1:ArrayOfno_met_metdata_TimeStamp" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_TimeStamp">
+        <xsd:all>
+          <xsd:element name="from" type="xsd:dateTime" />
+          <xsd:element name="location" type="ns1:ArrayOfno_met_metdata_Location" />
+          <xsd:element name="to" type="xsd:dateTime" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_Location">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="type" type="xsd:string" />
+          <xsd:element name="weatherElement" type="ns1:ArrayOfno_met_metdata_WeatherElement" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_WeatherElement">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:string" />
+          <xsd:element name="quality" type="xsd:int" />
+          <xsd:element name="value" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_WeatherElement">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_WeatherElement[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_Location">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_Location[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_TimeStamp">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_TimeStamp[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_TimeSerieTypes">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_TimeSerieTypes[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_TimeSerieTypes">
+        <xsd:all>
+          <xsd:element name="language" type="xsd:string" />
+          <xsd:element name="table" type="xsd:string" />
+          <xsd:element name="elemTable" type="xsd:string" />
+          <xsd:element name="serieTypeName" type="xsd:string" />
+          <xsd:element name="serieTypeID" type="xsd:int" />
+          <xsd:element name="serieTypeDescription" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_ElementProperties">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_ElementProperties[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_ElementProperties">
+        <xsd:all>
+          <xsd:element name="elemCode" type="xsd:string" />
+          <xsd:element name="elemNo" type="xsd:int" />
+          <xsd:element name="description" type="xsd:string" />
+          <xsd:element name="unit" type="xsd:string" />
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="elemGroup" type="xsd:string" />
+          <xsd:element name="language" type="xsd:string" />
+          <xsd:element name="fromdate" type="xsd:dateTime" />
+          <xsd:element name="todate" type="xsd:dateTime" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_StationProperties">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_StationProperties[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_StationProperties">
+        <xsd:all>
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="stnr" type="xsd:int" />
+          <xsd:element name="wmoNo" type="xsd:int" />
+          <xsd:element name="amsl" type="xsd:int" />
+          <xsd:element name="department" type="xsd:string" />
+          <xsd:element name="municipalityNo" type="xsd:int" />
+          <xsd:element name="fromYear" type="xsd:int" />
+          <xsd:element name="fromMonth" type="xsd:int" />
+          <xsd:element name="fromDay" type="xsd:int" />
+          <xsd:element name="toYear" type="xsd:int" />
+          <xsd:element name="toMonth" type="xsd:int" />
+          <xsd:element name="toDay" type="xsd:int" />
+          <xsd:element name="utm_e" type="xsd:int" />
+          <xsd:element name="utm_n" type="xsd:int" />
+          <xsd:element name="utm_zone" type="xsd:int" />
+          <xsd:element name="latDec" type="xsd:double" />
+          <xsd:element name="lonDec" type="xsd:double" />
+          <xsd:element name="latLonFmt" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_FlagProperties">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_FlagProperties[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_FlagProperties">
+        <xsd:all>
+          <xsd:element name="language" type="xsd:string" />
+          <xsd:element name="flagName" type="xsd:string" />
+          <xsd:element name="flagID" type="xsd:int" />
+          <xsd:element name="flagDescription" type="xsd:string" />
+          <xsd:element name="flagCode" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_PrecipitationTypes">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_PrecipitationTypes[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_PrecipitationTypes">
+        <xsd:all>
+          <xsd:element name="language" type="xsd:string" />
+          <xsd:element name="precipitationCode" type="xsd:string" />
+          <xsd:element name="precipitationID" type="xsd:int" />
+          <xsd:element name="precipitationDescription" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfString">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ArrayOfno_met_metdata_CountyTypes">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns1:no_met_metdata_CountyTypes[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType xmlns:jdev="http://xmlns.oracle.com/jdeveloper/webservices" jdev:packageName="no.met.metdata" name="no_met_metdata_CountyTypes">
+        <xsd:all>
+          <xsd:element name="language" type="xsd:string" />
+          <xsd:element name="countyName" type="xsd:string" />
+          <xsd:element name="countyID" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="getMetData0Request">
+    <part name="timeserietypeID" type="xsd:string" />
+    <part name="format" type="xsd:string" />
+    <part name="from" type="xsd:string" />
+    <part name="to" type="xsd:string" />
+    <part name="stations" type="xsd:string" />
+    <part name="elements" type="xsd:string" />
+    <part name="hours" type="xsd:string" />
+    <part name="months" type="xsd:string" />
+    <part name="username" type="xsd:string" />
+  </message>
+  <message name="getMetData0Response">
+    <part name="return" type="ns1:no_met_metdata_Metdata" />
+  </message>
+  <message name="getControlInfo1Request">
+    <part name="format" type="xsd:string" />
+    <part name="from" type="xsd:string" />
+    <part name="to" type="xsd:string" />
+    <part name="stations" type="xsd:string" />
+    <part name="elements" type="xsd:string" />
+    <part name="hours" type="xsd:string" />
+    <part name="months" type="xsd:string" />
+    <part name="username" type="xsd:string" />
+  </message>
+  <message name="getControlInfo1Response">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="getTimeserieTypesProperties2Request">
+    <part name="language" type="xsd:string" />
+    <part name="timeserieTypes" type="xsd:string" />
+  </message>
+  <message name="getTimeserieTypesProperties2Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_TimeSerieTypes" />
+  </message>
+  <message name="getElementsProperties3Request">
+    <part name="language" type="xsd:string" />
+    <part name="elem_codes" type="xsd:string" />
+  </message>
+  <message name="getElementsProperties3Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_ElementProperties" />
+  </message>
+  <message name="getElementsFromTimeserieType4Request">
+    <part name="timeserietypeID" type="xsd:string" />
+  </message>
+  <message name="getElementsFromTimeserieType4Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_ElementProperties" />
+  </message>
+  <message name="getElementsFromTimeserieTypeStation5Request">
+    <part name="timeserietypeID" type="xsd:string" />
+    <part name="stnr" type="xsd:int" />
+  </message>
+  <message name="getElementsFromTimeserieTypeStation5Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_ElementProperties" />
+  </message>
+  <message name="getStationsProperties6Request">
+    <part name="stations" type="xsd:string" />
+    <part name="username" type="xsd:string" />
+  </message>
+  <message name="getStationsProperties6Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_StationProperties" />
+  </message>
+  <message name="getStationsFromTimeserieType7Request">
+    <part name="timeserietypeID" type="xsd:string" />
+    <part name="username" type="xsd:string" />
+  </message>
+  <message name="getStationsFromTimeserieType7Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_StationProperties" />
+  </message>
+  <message name="getStationsFromTimeserieTypeElemCodes8Request">
+    <part name="timeserietypeID" type="xsd:string" />
+    <part name="elem_codes" type="xsd:string" />
+    <part name="username" type="xsd:string" />
+  </message>
+  <message name="getStationsFromTimeserieTypeElemCodes8Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_StationProperties" />
+  </message>
+  <message name="getStationsFromTimeserieTypeStationsElemCode9Request">
+    <part name="timeserietype" type="xsd:string" />
+    <part name="stations" type="xsd:string" />
+    <part name="elem_code" type="xsd:string" />
+    <part name="username" type="xsd:string" />
+  </message>
+  <message name="getStationsFromTimeserieTypeStationsElemCode9Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_StationProperties" />
+  </message>
+  <message name="getDateFormat10Request" />
+  <message name="getDateFormat10Response">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="getFlagProperties11Request">
+    <part name="language" type="xsd:string" />
+    <part name="flagsId" type="xsd:string" />
+  </message>
+  <message name="getFlagProperties11Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_FlagProperties" />
+  </message>
+  <message name="getPrecipitationTypes12Request">
+    <part name="language" type="xsd:string" />
+    <part name="precipitationTypesId" type="xsd:string" />
+  </message>
+  <message name="getPrecipitationTypes12Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_PrecipitationTypes" />
+  </message>
+  <message name="getValidLanguages13Request" />
+  <message name="getValidLanguages13Response">
+    <part name="return" type="ns1:ArrayOfString" />
+  </message>
+  <message name="getCountyTypes14Request">
+    <part name="language" type="xsd:string" />
+    <part name="countiesId" type="xsd:string" />
+  </message>
+  <message name="getCountyTypes14Response">
+    <part name="return" type="ns1:ArrayOfno_met_metdata_CountyTypes" />
+  </message>
+  <portType name="MetDataServicePortType">
+    <operation name="getMetData">
+      <input name="getMetData0Request" message="tns:getMetData0Request" />
+      <output name="getMetData0Response" message="tns:getMetData0Response" />
+    </operation>
+    <operation name="getControlInfo">
+      <input name="getControlInfo1Request" message="tns:getControlInfo1Request" />
+      <output name="getControlInfo1Response" message="tns:getControlInfo1Response" />
+    </operation>
+    <operation name="getTimeserieTypesProperties">
+      <input name="getTimeserieTypesProperties2Request" message="tns:getTimeserieTypesProperties2Request" />
+      <output name="getTimeserieTypesProperties2Response" message="tns:getTimeserieTypesProperties2Response" />
+    </operation>
+    <operation name="getElementsProperties">
+      <input name="getElementsProperties3Request" message="tns:getElementsProperties3Request" />
+      <output name="getElementsProperties3Response" message="tns:getElementsProperties3Response" />
+    </operation>
+    <operation name="getElementsFromTimeserieType">
+      <input name="getElementsFromTimeserieType4Request" message="tns:getElementsFromTimeserieType4Request" />
+      <output name="getElementsFromTimeserieType4Response" message="tns:getElementsFromTimeserieType4Response" />
+    </operation>
+    <operation name="getElementsFromTimeserieTypeStation">
+      <input name="getElementsFromTimeserieTypeStation5Request" message="tns:getElementsFromTimeserieTypeStation5Request" />
+      <output name="getElementsFromTimeserieTypeStation5Response" message="tns:getElementsFromTimeserieTypeStation5Response" />
+    </operation>
+    <operation name="getStationsProperties">
+      <input name="getStationsProperties6Request" message="tns:getStationsProperties6Request" />
+      <output name="getStationsProperties6Response" message="tns:getStationsProperties6Response" />
+    </operation>
+    <operation name="getStationsFromTimeserieType">
+      <input name="getStationsFromTimeserieType7Request" message="tns:getStationsFromTimeserieType7Request" />
+      <output name="getStationsFromTimeserieType7Response" message="tns:getStationsFromTimeserieType7Response" />
+    </operation>
+    <operation name="getStationsFromTimeserieTypeElemCodes">
+      <input name="getStationsFromTimeserieTypeElemCodes8Request" message="tns:getStationsFromTimeserieTypeElemCodes8Request" />
+      <output name="getStationsFromTimeserieTypeElemCodes8Response" message="tns:getStationsFromTimeserieTypeElemCodes8Response" />
+    </operation>
+    <operation name="getStationsFromTimeserieTypeStationsElemCode">
+      <input name="getStationsFromTimeserieTypeStationsElemCode9Request" message="tns:getStationsFromTimeserieTypeStationsElemCode9Request" />
+      <output name="getStationsFromTimeserieTypeStationsElemCode9Response" message="tns:getStationsFromTimeserieTypeStationsElemCode9Response" />
+    </operation>
+    <operation name="getDateFormat">
+      <input name="getDateFormat10Request" message="tns:getDateFormat10Request" />
+      <output name="getDateFormat10Response" message="tns:getDateFormat10Response" />
+    </operation>
+    <operation name="getFlagProperties">
+      <input name="getFlagProperties11Request" message="tns:getFlagProperties11Request" />
+      <output name="getFlagProperties11Response" message="tns:getFlagProperties11Response" />
+    </operation>
+    <operation name="getPrecipitationTypes">
+      <input name="getPrecipitationTypes12Request" message="tns:getPrecipitationTypes12Request" />
+      <output name="getPrecipitationTypes12Response" message="tns:getPrecipitationTypes12Response" />
+    </operation>
+    <operation name="getValidLanguages">
+      <input name="getValidLanguages13Request" message="tns:getValidLanguages13Request" />
+      <output name="getValidLanguages13Response" message="tns:getValidLanguages13Response" />
+    </operation>
+    <operation name="getCountyTypes">
+      <input name="getCountyTypes14Request" message="tns:getCountyTypes14Request" />
+      <output name="getCountyTypes14Response" message="tns:getCountyTypes14Response" />
+    </operation>
+  </portType>
+  <binding name="MetDataServiceBinding" type="tns:MetDataServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="getMetData">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getMetData0Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getMetData0Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getControlInfo">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getControlInfo1Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getControlInfo1Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getTimeserieTypesProperties">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getTimeserieTypesProperties2Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getTimeserieTypesProperties2Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getElementsProperties">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getElementsProperties3Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getElementsProperties3Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getElementsFromTimeserieType">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getElementsFromTimeserieType4Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getElementsFromTimeserieType4Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getElementsFromTimeserieTypeStation">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getElementsFromTimeserieTypeStation5Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getElementsFromTimeserieTypeStation5Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getStationsProperties">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getStationsProperties6Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getStationsProperties6Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getStationsFromTimeserieType">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getStationsFromTimeserieType7Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getStationsFromTimeserieType7Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getStationsFromTimeserieTypeElemCodes">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getStationsFromTimeserieTypeElemCodes8Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getStationsFromTimeserieTypeElemCodes8Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getStationsFromTimeserieTypeStationsElemCode">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getStationsFromTimeserieTypeStationsElemCode9Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getStationsFromTimeserieTypeStationsElemCode9Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getDateFormat">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getDateFormat10Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getDateFormat10Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getFlagProperties">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getFlagProperties11Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getFlagProperties11Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getPrecipitationTypes">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getPrecipitationTypes12Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getPrecipitationTypes12Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getValidLanguages">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getValidLanguages13Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getValidLanguages13Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getCountyTypes">
+      <soap:operation soapAction="" style="rpc" />
+      <input name="getCountyTypes14Request">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output name="getCountyTypes14Response">
+        <soap:body use="encoded" namespace="MetDataService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MetDataService">
+    <port name="MetDataServicePort" binding="tns:MetDataServiceBinding">
+      <soap:address location="http://eklima.met.no/metdata/MetDataService" />
+    </port>
+  </service>
+</definitions>
