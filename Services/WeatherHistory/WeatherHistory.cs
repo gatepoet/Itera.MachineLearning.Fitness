@@ -6,9 +6,9 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace Itera.MachineLearning.Fitness.Services
+namespace Itera.MachineLearning.Fitness.Services.WeatherHistory
 {
-    public class WeatherDataCollection<T> :
+    public class WeatherHistory<T> :
         IWeatherDataCollection<T>
         where T : class, ICalendarData
     {
@@ -23,8 +23,8 @@ namespace Itera.MachineLearning.Fitness.Services
         public DateTime End { get; private set; }
         public IEnumerable<T> WeatherData { get; private set; }
 
-        internal WeatherDataCollection(
-            SimpleWeatherDataCollection weatherData)
+        internal WeatherHistory(
+            SimpleWeatherHistory weatherData)
         {
             Contract.Assert(Constructor != null,
                 string.Format(

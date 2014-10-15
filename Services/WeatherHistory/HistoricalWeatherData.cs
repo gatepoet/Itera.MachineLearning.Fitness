@@ -1,13 +1,12 @@
 using System;
 using System.Runtime.Serialization;
-using Itera.MachineLearning.Fitness.Services;
 
-namespace Itera.MachineLearning.Fitness
+namespace Itera.MachineLearning.Fitness.Services.WeatherHistory
 {
     [DataContract]
-    public class WeatherData : ICalendarData
+    public class HistoricalWeatherData : ICalendarData
     {
-        private WeatherData(DateTime date)
+        private HistoricalWeatherData(DateTime date)
         {
             Date = date;
         }

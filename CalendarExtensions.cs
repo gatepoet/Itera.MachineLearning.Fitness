@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Text;
 using Itera.MachineLearning.Fitness.Services;
+using Itera.MachineLearning.Fitness.Services.WeatherHistory;
 
 namespace Itera.MachineLearning.Fitness
 {
@@ -17,7 +18,20 @@ namespace Itera.MachineLearning.Fitness
                 : contentFunc(item);
         }
 
-        public static string ToHtmlContent(this WeatherData weatherData)
+        public static string ToHtmlContent(this ForecastWeatherData forecastWeatherData)
+        {
+            return string.Format(
+                "<span class='date'>{0:d. MMM}</span><br />" +
+                "<span class='temperature'>{1}\u00A0<sub>\u2103</sub></span><br />" +
+                "<span class='percipitation'>{2}\u00A0<sub>mm</sub></span><br />" +
+                "<span class='wind'>{3}\u00A0<sup>m</sup>\u2044<sub>s</sub></span><br />",
+                forecastWeatherData.Date,
+                forecastWeatherData.Temperature,
+                forecastWeatherData.Percipitation,
+                forecastWeatherData.Wind);
+        }
+
+        public static string ToHtmlContent(this HistoricalWeatherData historicalWeatherData)
         {
             return string.Format(
                 "<span class='date'>{0:d. MMM}</span><br />" +
@@ -26,12 +40,12 @@ namespace Itera.MachineLearning.Fitness
                 "<span class='wind'>{3}\u00A0<sup>m</sup>\u2044<sub>s</sub></span><br />" +
                 "<span class='cloudness'>{4}</span><br />" +
                 "<span class='stateOfGround'>{5}</span><br />",
-                weatherData.Date,
-                weatherData.Temperature,
-                weatherData.Percipitation,
-                weatherData.Wind,
-                weatherData.Cloudness,
-                weatherData.StateOfGround);
+                historicalWeatherData.Date,
+                historicalWeatherData.Temperature,
+                historicalWeatherData.Percipitation,
+                historicalWeatherData.Wind,
+                historicalWeatherData.Cloudness,
+                historicalWeatherData.StateOfGround);
         }
 
         public static string ToHtmlTable<TItem>(this

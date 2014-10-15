@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace Itera.MachineLearning.Fitness.Services
+namespace Itera.MachineLearning.Fitness.Services.WeatherHistory
 {
-    public static class WeatherDataExtensions
+    public static class WeatherHistoryExtensions
     {
         public class MeasureProperty
         {

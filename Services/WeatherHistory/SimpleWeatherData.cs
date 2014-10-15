@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Itera.MachineLearning.Fitness.Services
+namespace Itera.MachineLearning.Fitness.Services.WeatherHistory
 {
     public class SimpleWeatherData : ICalendarData
     {

@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Itera.MachineLearning.Fitness.Services
+namespace Itera.MachineLearning.Fitness.Services.WeatherHistory
 {
     public enum StateOfGround
     {
