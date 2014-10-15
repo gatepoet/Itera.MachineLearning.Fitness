@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gpx xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd" version="1.1" creator="Sports Tracker" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+  <metadata>
+    <name>activity2 22/09/2011/10:55:30.19</name>
+    <desc></desc>
+    <author>
+      <name>Bruno</name>
+    </author>
+    <link href="www.sports-tracker.com">
+      <text>Sports Tracker</text>
+    </link>
+  </metadata>
+  <trk>
+    <trkseg/>
+  </trk>
+</gpx>
