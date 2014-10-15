@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Itera.MachineLearning.Fitness.Services;
@@ -70,10 +71,11 @@ namespace Itera.MachineLearning.Fitness
             html.Append("\t\t</tr>\n" +
                         "\t</thead>\n" +
                         "\t<tbody>\n");
-
+            var cal = CultureInfo.CreateSpecificCulture("no").Calendar;
+            
             html.Append(string.Join(string.Empty,
                 calendar.Items
-                    .GroupBy(i => (i.Date.DayOfYear + 1) / Calendar<TItem>.DaysInAWeek)
+                    .GroupBy(i => cal.GetWeekOfYear(i.Date, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
                     .OrderBy(g => g.Key)
                     .Select(g =>
                         "\t\t<tr>\n" +
