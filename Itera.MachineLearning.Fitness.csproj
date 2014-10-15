@@ -85,101 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Data\PolarPersonalTrainer\Abelone,_Vikersund-2013-2-16.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Cross-country-2014-1-15.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Cross-country-2014-1-16.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Cross-country-2014-1-17.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Cross-country-2014-1-18.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Cross-country-2014-1-19.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-1-20.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-1-25.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-1-27.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-2-15.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-2-21.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-2-22.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-2-24.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-3-1.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-3-29.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-3-30.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-3-6.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-4-1.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2013-9-15.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2014-4-18.gpx" />
-    <None Include="Data\PolarPersonalTrainer\exercise-2014-4-21.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Frognerseteren_-_Sognsvann-2012-12-29.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Geilo-2013-1-6.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Mylla_-_Sognsvann-2013-3-17.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Norefjell-2013-3-10.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Oslo_-_Drøbak_-_Oslo-2013-9-28.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Sognsvann_-_Frognerseteren-2013-2-2.gpx" />
-    <None Include="Data\PolarPersonalTrainer\Sognsvann_-_Ullevålseter-2013-1-31.gpx" />
-    <None Include="Data\RunKeeper\2011-04-06-1548.gpx" />
-    <None Include="Data\RunKeeper\2011-04-07-1012.gpx" />
-    <None Include="Data\RunKeeper\2011-04-23-1213.gpx" />
-    <None Include="Data\RunKeeper\2011-04-24-1855.gpx" />
-    <None Include="Data\RunKeeper\2011-04-25-1002.gpx" />
-    <None Include="Data\RunKeeper\2011-04-26-1855.gpx" />
-    <None Include="Data\RunKeeper\2011-04-29-1622.gpx" />
-    <None Include="Data\RunKeeper\2011-04-30-1939.gpx" />
-    <None Include="Data\RunKeeper\2011-05-09-1551.gpx" />
-    <None Include="Data\RunKeeper\2011-05-11-1905.gpx" />
-    <None Include="Data\RunKeeper\2011-05-13-1837.gpx" />
-    <None Include="Data\RunKeeper\2011-05-14-1740.gpx" />
-    <None Include="Data\RunKeeper\2011-09-10-2000.gpx" />
-    <None Include="Data\RunKeeper\2011-09-30-1341.gpx" />
-    <None Include="Data\RunKeeper\2011-09-30-1438.gpx" />
-    <None Include="Data\RunKeeper\2011-10-01-1508.gpx" />
-    <None Include="Data\RunKeeper\2011-10-07-1804.gpx" />
-    <None Include="Data\RunKeeper\2011-10-11-0944.gpx" />
-    <None Include="Data\RunKeeper\2011-10-12-1537.gpx" />
-    <None Include="Data\RunKeeper\2011-11-08-1134.gpx" />
-    <None Include="Data\RunKeeper\2013-08-01-0939.gpx" />
-    <None Include="Data\RunKeeper\2013-08-20-1929.gpx" />
-    <None Include="Data\RunKeeper\2013-08-22-1205.gpx" />
-    <None Include="Data\RunKeeper\2013-08-22-1218.gpx" />
-    <None Include="Data\RunKeeper\2013-08-22-1908.gpx" />
-    <None Include="Data\RunKeeper\2013-08-25-0934.gpx" />
-    <None Include="Data\RunKeeper\2013-09-28-1144.gpx" />
-    <None Include="Data\RunKeeper\2013-09-28-1517.gpx" />
-    <None Include="Data\RunKeeper\2013-10-06-1109.gpx" />
-    <None Include="Data\RunKeeper\2014-04-20-1947.gpx" />
-    <None Include="Data\RunKeeper\cardioActivities.csv" />
-    <None Include="Data\RunKeeper\measurements.csv" />
-    <None Include="Data\SportsTracker\W20110612163551.gpx" />
-    <None Include="Data\SportsTracker\W20110613133554.gpx" />
-    <None Include="Data\SportsTracker\W20110620170206.gpx" />
-    <None Include="Data\SportsTracker\W20110622211026.gpx" />
-    <None Include="Data\SportsTracker\W20110625145517.gpx" />
-    <None Include="Data\SportsTracker\W20110625154324.gpx" />
-    <None Include="Data\SportsTracker\W20110627231738.gpx" />
-    <None Include="Data\SportsTracker\W20110703184503.gpx" />
-    <None Include="Data\SportsTracker\W20110706132911.gpx" />
-    <None Include="Data\SportsTracker\W20110727205123.gpx" />
-    <None Include="Data\SportsTracker\W20110811144504.gpx" />
-    <None Include="Data\SportsTracker\W20110910185141.gpx" />
-    <None Include="Data\SportsTracker\W20110914194537.gpx" />
-    <None Include="Data\SportsTracker\W20110916181732.gpx" />
-    <None Include="Data\SportsTracker\W20110922105530.gpx" />
-    <None Include="Data\SportsTracker\W20120427191659.gpx" />
-    <None Include="Data\Strava\20120119-123613-Ride.gpx" />
-    <None Include="Data\Strava\20120211-120637-Ride.gpx" />
-    <None Include="Data\Strava\20120306-223127-Walk.gpx" />
-    <None Include="Data\Strava\20120320-142843-Ride.gpx" />
-    <None Include="Data\Strava\20120403-094257-Ride.gpx" />
-    <None Include="Data\Strava\20120417-095736-Ride.gpx" />
-    <None Include="Data\Strava\20120512-182737-Ride.gpx" />
-    <None Include="Data\Strava\20140405-180050-Hike.gpx" />
-    <None Include="Data\Strava\20140407-105538-Kitesurf.gpx" />
-    <None Include="Data\Strava\20140415-171253-Walk.gpx" />
-    <None Include="Data\Strava\20140418-102100-RollerSki.gpx" />
-    <None Include="Data\Strava\20140420-165137-Ride.gpx" />
-    <None Include="Data\Strava\20140421-100920-NordicSki.gpx" />
-    <None Include="Data\Strava\20140429-164505-Run.gpx" />
-    <None Include="Data\Strava\20140501-143058-Ride.gpx" />
-    <None Include="Data\Strava\20140528-172009-Ride.gpx" />
-    <None Include="Data\Strava\20140531-201743-Ride.gpx" />
-    <None Include="Data\Strava\20140730-160555-Ride.gpx" />
-    <None Include="Data\Strava\20141006-164807-Ride.gpx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -219,9 +124,6 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TestData\" />
-  </ItemGroup>
-  <ItemGroup>
     <WebReferenceUrl Include="http://eklima.met.no/metdata/MetDataService%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\no.met.eklima\</RelPath>
@@ -233,9 +135,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Itera_MachineLearning_Fitness_no_met_eklima_MetDataService</CachedSettingsPropName>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\PolarPersonalTrainer\Travelisio_15.10.2014_export.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
