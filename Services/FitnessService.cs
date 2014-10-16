@@ -13,6 +13,10 @@ namespace Itera.MachineLearning.Fitness.Services
     {
         private static readonly CultureInfo Culture = CultureInfo.InvariantCulture;
 
+        private static readonly string BasePath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            "MachineLearning");
+
         public IEnumerable<Activity> GetActivities()
         {
             return GetRunkeeperActivities();
@@ -21,9 +25,8 @@ namespace Itera.MachineLearning.Fitness.Services
         private IEnumerable<Activity> GetRunkeeperActivities()
         {
             var path = Path.Combine(
-                Environment.GetFolderPath(
-                    Environment.SpecialFolder.MyDocuments),
-                @"MachineLearning\Runkeeper\cardioActivities.csv");
+                BasePath,
+                @"Runkeeper\cardioActivities.csv");
                 
             
             return File.ReadAllLines(path)
