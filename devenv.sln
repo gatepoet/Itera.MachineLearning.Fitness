@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itera.MachineLearning.Fitness", "Itera.MachineLearning.Fitness.csproj", "{03521A47-7D74-40D7-844E-819B16BCCE6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "Program\Program.csproj", "{30C52431-E86B-4D1E-B779-6EA7CB7F32F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03521A47-7D74-40D7-844E-819B16BCCE6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03521A47-7D74-40D7-844E-819B16BCCE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03521A47-7D74-40D7-844E-819B16BCCE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03521A47-7D74-40D7-844E-819B16BCCE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30C52431-E86B-4D1E-B779-6EA7CB7F32F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C52431-E86B-4D1E-B779-6EA7CB7F32F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C52431-E86B-4D1E-B779-6EA7CB7F32F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C52431-E86B-4D1E-B779-6EA7CB7F32F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
