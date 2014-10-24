@@ -19,7 +19,7 @@ namespace Itera.MachineLearning.Fitness
                 : contentFunc(item);
         }
 
-        public static string ToHtmlContent(this ForecastWeatherData forecastWeatherData)
+        public static string ToHtmlContent(this WeatherData forecastWeatherData)
         {
             return string.Format(
                 "<span class='date'>{0:d. MMM}</span><br />" +

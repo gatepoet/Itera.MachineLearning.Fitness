@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Program")]
+[assembly: AssemblyTitle("GPXLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Program")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("First Mutual Bank")]
+[assembly: AssemblyProduct("GPXLib")]
+[assembly: AssemblyCopyright("Copyright © First Mutual Bank 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("934a4d06-2320-408b-b15c-8176f232bdf1")]
+[assembly: Guid("e5356218-00b9-4e47-80fd-0db261154a6b")]
 
 // Version information for an assembly consists of the following four values:
 //

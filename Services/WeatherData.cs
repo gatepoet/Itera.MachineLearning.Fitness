@@ -2,7 +2,7 @@ using System;
 
 namespace Itera.MachineLearning.Fitness.Services
 {
-    public class ForecastWeatherData : ICalendarData
+    public class WeatherData : ICalendarData
     {
         public DateTime Date { get; internal set; }
         public double Temperature { get; internal set; }

@@ -9,8 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Itera.MachineLearning.Fitness</RootNamespace>
     <AssemblyName>Itera.MachineLearning.Fitness</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,22 +33,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="numl">
-      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\numl.0.7.13\lib\net40\numl.dll</HintPath>
+      <HintPath>packages\numl.0.7.14\lib\net40\numl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Reactive.Core">
-      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+      <HintPath>packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\..\Itera.MachineLearning.Fitness\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <HintPath>packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -59,11 +61,20 @@
   <ItemGroup>
     <Compile Include="Calendar.cs" />
     <Compile Include="CalendarExtensions.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Learning\ActivityLearnerBase.cs" />
+    <Compile Include="Learning\IActivityLearner.cs" />
+    <Compile Include="Learning\ITypedActivityLearner.cs" />
+    <Compile Include="Learning\TypedActivityLearner.cs" />
+    <Compile Include="Learning\ActivityLearner.cs" />
+    <Compile Include="Learning\LearnerFactory.cs" />
+    <Compile Include="Learning\TypedActivityDescriptor.cs" />
+    <Compile Include="Learning\ActivityDescriptor.cs" />
     <Compile Include="Services\Activity.cs" />
     <Compile Include="Services\ActivityType.cs" />
     <Compile Include="Services\FitnessService.cs" />
+    <Compile Include="Services\WeatherData.cs" />
     <Compile Include="Services\WeatherForecast\ForecastService.cs" />
-    <Compile Include="Services\WeatherForecast\ForecastWeatherData.cs" />
     <Compile Include="Services\ICalendarData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -78,7 +89,7 @@
     <Compile Include="Services\WeatherHistory\SimpleWeatherData.cs" />
     <Compile Include="Services\WeatherHistory\WeatherHistory.cs" />
     <Compile Include="Services\WeatherHistory\WeatherHistoryExtensions.cs" />
-    <Compile Include="Services\WeatherDataService.cs" />
+    <Compile Include="Services\WeatherService.cs" />
     <Compile Include="Services\WeatherHistory\HistoricalWeatherData.cs" />
     <Compile Include="Web References\no.met.eklima\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -88,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,7 +151,20 @@
       <CachedSettingsPropName>Itera_MachineLearning_Fitness_no_met_eklima_MetDataService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="GPXLib\GPXLib.csproj">
+      <Project>{a808960a-b896-4cb0-8f2e-2bdac931a190}</Project>
+      <Name>GPXLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

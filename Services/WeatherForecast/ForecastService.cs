@@ -12,7 +12,7 @@ namespace Itera.MachineLearning.Fitness.Services.WeatherForecast
 {
     public class ForecastService
     {
-        public async Task<IEnumerable<ForecastWeatherData>> GetForecast(string place)
+        public async Task<IEnumerable<WeatherData>> GetForecast(string place)
         {
             var url = Path.Combine(
                 "http://www.yr.no/place",
@@ -65,7 +65,7 @@ namespace Itera.MachineLearning.Fitness.Services.WeatherForecast
                         .Single()
                 })
                 .Where(m => m.From.Hour >= 18)
-                .Select(m => new ForecastWeatherData()
+                .Select(m => new WeatherData()
                 {
                     Date = m.From.Date,
                     Temperature = m.Temperature.Value,

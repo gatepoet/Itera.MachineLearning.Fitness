@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Linq;
 using numl.Math.LinearAlgebra;
+using GPXLib;
 
 namespace Itera.MachineLearning.Fitness.Services
 {
@@ -14,20 +15,63 @@ namespace Itera.MachineLearning.Fitness.Services
     {
         private static readonly CultureInfo Culture = CultureInfo.InvariantCulture;
 
-        private static readonly string BasePath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "MachineLearning");
+        public IEnumerable<Activity> GetAllActivities()
+        {
+            var trails = GetTrailSummary();
+            var activities = trails
+                .Select(t =>
+                {
+                    var date = t.TrackPointArray.First().time;
+                    var duration = t.TrackPointArray.Last().time
+                        .Subtract(date);
+                    return new Activity
+                        {
+                            Distance = t.TotalDistance,
+                            Date = date,
+                            Duration = duration,
+                            AverageSpeed = t.TotalDistance / duration.TotalHours,
+                        };
+                })
+                .OrderBy(a => a.Date);
 
-        public IEnumerable<Activity> GetActivities()
+            return activities;
+        }
+
+        private IEnumerable<TrailSummary> GetTrailSummary()
+        {
+            var trails = Directory
+                .EnumerateFiles(
+                    Config.BasePath,
+                    "*.gpx",
+                    SearchOption.AllDirectories)
+                .Select(LoadTrail)
+                .Where(trail => trail != null && trail.TotalDistance > 0);
+
+            return trails;
+        }
+
+        private TrailSummary LoadTrail(string filename)
+        {
+            try
+            {
+                return new TrailSummary(filename);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        } 
+
+        public IEnumerable<Activity> GetTypedActivities()
         {
             return GetRunkeeperActivities().Union(
-                GetSportsTrackerActivities());
+                GetPolarPersonalTrainerActivities());
         }
 
         public IEnumerable<Activity> GetRunkeeperActivities()
         {
             var path = Path.Combine(
-                BasePath,
+                Config.BasePath,
                 @"Runkeeper\cardioActivities.csv");
             
             return File.ReadAllLines(path)
@@ -38,28 +82,68 @@ namespace Itera.MachineLearning.Fitness.Services
         private Activity CreateRunkeeperActivity(string line)
         {
             var arr = line.Split(',');
+            var distance = GetDouble(arr[3]);
             ActivityType type;
             if (!Enum.TryParse(arr[1], out type))
             {
-                switch (arr[1])
-                {
-                    case "MountinBiking":
-                        type = ActivityType.Cycling;
-                        break;
-                    default:
-                        type = ActivityType.Other;
-                        break;
-                }
+                type = ParseActivityType(arr[1], distance > 0);
             }
+            var avgSpeed = GetAverageSpeed(
+                                GetDouble(
+                                    arr[6]));
             return new Activity
             {
                 Date = DateTime.Parse(arr[0], Culture),
                 Type = type,
-                Distance = GetDouble(arr[3]),
+                Distance = distance,
                 Duration = GetDuration(arr[4]),
-                AverageSpeed = GetDouble(arr[6])
+                AverageSpeed = avgSpeed
 
             };
+        }
+
+        private static double GetAverageSpeed(double a)
+        {
+            var avgSpeed = a;
+            if (avgSpeed > 1000)
+                avgSpeed = avgSpeed / 1000;
+            if (avgSpeed > 100)
+                avgSpeed = avgSpeed / 100;
+            if (avgSpeed > 60)
+                avgSpeed = avgSpeed / 10;
+            return avgSpeed;
+        }
+
+        private ActivityType ParseActivityType(string text, bool hasDistance)
+        {
+            ActivityType type;
+            if (Enum.TryParse(text, out type))
+            {
+                return type;
+            }
+            switch (text)
+            {
+                case "Cross-country":
+                case "Cross-Country Skiing":
+                    type = ActivityType.Skiing;
+                    break;
+                case "Mountain Biking":
+                    type = ActivityType.Cycling;
+                    break;
+                case "Hiking":
+                    type = ActivityType.Walking;
+                    break;
+                case "Other sport":
+                    type = hasDistance
+                        ? ActivityType.Other
+                        : ActivityType.Gym;
+                    break;
+                default:
+                    Console.WriteLine("Unknown activity: " + text);
+                    type = ActivityType.Other;
+                    break;
+            }
+            return type;
         }
 
         private double GetDouble(string s)
@@ -78,7 +162,7 @@ namespace Itera.MachineLearning.Fitness.Services
 
         XNamespace stNs = "http://www.polarpersonaltrainer.com";
 
-        public IEnumerable<Activity> GetSportsTrackerActivities()
+        public IEnumerable<Activity> GetPolarPersonalTrainerActivities()
         {
 
             var document = GetPolarXML();
@@ -86,36 +170,30 @@ namespace Itera.MachineLearning.Fitness.Services
                 .Descendants(stNs + "polar-exercise-data")
                 .Descendants(stNs + "calendar-items")
                 .Descendants(stNs + "exercise")
-                .Select(CreateSportsTrackerActivity);
+                .Select(PolarPersonalTrainerActivity);
         }
 
-        private Activity CreateSportsTrackerActivity(XElement xml)
+        private Activity PolarPersonalTrainerActivity(XElement xml)
         {
             ActivityType type;
             var typeString = xml.Element(stNs + "sport").Value;
             if (!Enum.TryParse(typeString, out type))
             {
-                switch (typeString)
-                {
-                    case "Cross-country":
-                        type = ActivityType.Skiing;
-                        break;
-                    default:
-                        type = ActivityType.Other;
-                        break;
-                }
+                type = ParseActivityType(typeString, true);
             }
             var result = xml.Element(stNs + "result");
             var distance = GetDouble(GetValue(result.Element(stNs + "distance")));
             var duration = TimeSpan.Parse(result.Element(stNs + "duration").Value);
-            
+            var avgSpeed = GetAverageSpeed(
+                distance / duration.TotalHours * 1.6);
+
             return new Activity
             {
                 Date = DateTime.Parse(xml.Element(stNs + "time").Value),
                 Type = type,
                 Distance = distance/1000.0,
                 Duration = duration,
-                AverageSpeed = distance/duration.TotalHours * 1.6
+                AverageSpeed = avgSpeed
             };
         }
 
@@ -127,7 +205,7 @@ namespace Itera.MachineLearning.Fitness.Services
         public static XDocument GetPolarXML()
         {
             var path = Path.Combine(
-                BasePath,
+                Config.BasePath,
                 @"PolarPersonalTrainer\Travelisio_15.10.2014_export.xml");
 
             var document = XDocument.Load(path);

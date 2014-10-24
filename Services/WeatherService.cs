@@ -13,19 +13,29 @@ using Itera.MachineLearning.Fitness.Services.WeatherHistory;
 
 namespace Itera.MachineLearning.Fitness.Services
 {
-    public class WeatherDataService
+    public enum Station
     {
+        Oslo = 18700
+    }
+    public static class Place
+    {
+        public static string Oslo = "Norge/Oslo/Oslo/Oslo";
+    }
+    public class WeatherService
+    {
+
+
         private readonly MetDataService historyService;
         private readonly ForecastService forecastService;
 
-        public WeatherDataService()
+        public WeatherService()
         {
             historyService = new MetDataService();
             forecastService = new ForecastService();
         }
 
         public WeatherHistory<T> LastMonth<T>(
-            int station)
+            Station station)
             where T :
                 class,
                 ICalendarData
@@ -39,7 +49,7 @@ namespace Itera.MachineLearning.Fitness.Services
         }
 
         public WeatherHistory<T> GetHistoricalMetDataDaily<T>(
-            int station,
+            Station station,
             DateTime from,
             DateTime to)
             where T :
@@ -50,7 +60,7 @@ namespace Itera.MachineLearning.Fitness.Services
 
             return new WeatherHistory<T>(
                 GetHistoricalMetDataDaily(
-                    station,
+                    (int) station,
                     measureKeys,
                     from,
                     to));
@@ -74,12 +84,12 @@ namespace Itera.MachineLearning.Fitness.Services
             return new SimpleWeatherHistory(metData);
         }
 
-        public WeatherForecast<ForecastWeatherData> NextWeek(string place)
+        public WeatherForecast<WeatherData> NextWeek(string place)
         {
             var task = Task.Run(() => forecastService.GetForecast(place));
             task.Wait();
-
-            return new WeatherForecast<ForecastWeatherData>(task.Result);
+            
+            return new WeatherForecast<WeatherData>(task.Result);
         }
     }
 }

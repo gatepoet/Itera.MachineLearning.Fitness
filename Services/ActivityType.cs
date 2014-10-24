@@ -7,6 +7,8 @@ namespace Itera.MachineLearning.Fitness.Services
         Cycling,
         Kitesurfing,
         Walking,
-        Skiing
+        Skiing,
+        Tennis,
+        Gym
     }
 }
