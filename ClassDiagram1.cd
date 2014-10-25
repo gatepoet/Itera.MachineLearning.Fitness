@@ -1,19 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Itera.MachineLearning.Fitness.Learning.TypedActivityLearner">
-    <Position X="7.5" Y="1.75" Width="2" />
-    <Members>
-      <Field Name="activityTypeByWeather" Hidden="true" />
-      <Field Name="activityTypeByWeekdayAndHour" Hidden="true" />
-      <Field Name="averageSpeedByDurationAndType" Hidden="true" />
-      <Field Name="distanceByActivityType" Hidden="true" />
-    </Members>
+  <Class Name="Itera.MachineLearning.Fitness.Learning.TypedActivityDescriptor">
+    <Position X="7.25" Y="1.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAQACAAQABAAAAAAACAAEAAAACAEAAQIIACAAA=</HashCode>
-      <FileName>Learning\TypedActivityLearner.cs</FileName>
-      <NewMemberFileName>Learning\ActivityLearner.cs</NewMemberFileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Learning\TypedActivityDescriptor.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Itera.MachineLearning.Fitness.Learning.ActivityDescriptor">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAEAAAAAABAAAIEAAAEAQA=</HashCode>
+      <FileName>Learning\ActivityDescriptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Itera.MachineLearning.Fitness.Services.Activity">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAEAAAAAABBAQAAAAAAAAA=</HashCode>
+      <FileName>Services\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Itera.MachineLearning.Fitness.Learning.ITypedActivityLearner">
+    <Position X="3" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Learning\ITypedActivityLearner.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Itera.MachineLearning.Fitness.Learning.IActivityLearner">
+    <Position X="6.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAIAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Learning\IActivityLearner.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

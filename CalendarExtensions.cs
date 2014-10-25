@@ -32,6 +32,55 @@ namespace Itera.MachineLearning.Fitness
                 forecastWeatherData.Wind);
         }
 
+        public static string ToTypedHtmlContent(this DailyExercisePlan dailyPlan)
+        {
+            var table = string.Format(
+                "<span class='date'>{0:d. MMM}</span><br />" +
+                "<span class='temperature'>{1}\u00A0<sub>\u2103</sub></span><br />" +
+                "<span class='percipitation'>{2}\u00A0<sub>mm</sub></span><br />" +
+                "<span class='wind'>{3}\u00A0<sup>m</sup>\u2044<sub>s</sub></span><br />" +
+                "<span class=''>{4}</span><br />" +
+                "<span class=''>{5}</span><br />",
+                dailyPlan.Date,
+                dailyPlan.Temperature,
+                dailyPlan.Percipitation,
+                dailyPlan.Wind,
+                dailyPlan.TypeByWeather,
+                dailyPlan.Duration);
+
+            return table;
+        }
+        public static string ToDetailedHtmlContent(this DailyExercisePlan dailyPlan)
+        {
+            var table = string.Format(
+                "<span class='date'>{0:d. MMM}</span><br />" +
+                "<span class='temperature'>{1}\u00A0<sub>\u2103</sub></span><br />" +
+                "<span class='percipitation'>{2}\u00A0<sub>mm</sub></span><br />" +
+                "<span class='wind'>{3}\u00A0<sup>m</sup>\u2044<sub>s</sub></span><br />" +
+                "<span class=''>{4}</span><br />",
+                dailyPlan.Date,
+                dailyPlan.Temperature,
+                dailyPlan.Percipitation,
+                dailyPlan.Wind,
+                dailyPlan.Duration);
+
+            foreach (var hourlyExercisePlan in dailyPlan.TypeByWeekdayAndHour)
+            {
+                table += string.Format(
+                    "<br />" +
+                    "<span><b>{0}</b></span><br />" +
+                    "<span>{1:0.00}\u00A0km</span><br />" +
+                    "<span>{2:0.00}\u00A0km\u2044h</span><br />" +
+                    "<span>{3}</span><br />",
+                    hourlyExercisePlan.Activity,
+                    hourlyExercisePlan.Distance,
+                    hourlyExercisePlan.AverageSpeed,
+                    string.Join(", ", hourlyExercisePlan.Hours.Select(h => h.ToString() + ":00")));
+            }
+
+            return table;
+        }
+
         public static string ToHtmlContent(this HistoricalWeatherData historicalWeatherData)
         {
             return string.Format(

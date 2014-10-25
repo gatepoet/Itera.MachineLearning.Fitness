@@ -51,9 +51,13 @@ namespace Itera.MachineLearning.Fitness.Learning
                 trainingPercentage,
                 trainingRepeatCount,
                 generator);
+
             model.Model.Save(Path.Combine(
                 Config.BasePath,
                 caller.Substring(5) + ".xml"));
+
+            Console.WriteLine(caller.Substring(5));
+            Console.WriteLine(model.ToString());
 
             return model;
         }

@@ -62,6 +62,7 @@
     <Compile Include="Calendar.cs" />
     <Compile Include="CalendarExtensions.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="ExercisePlanner.cs" />
     <Compile Include="Learning\ActivityLearnerBase.cs" />
     <Compile Include="Learning\IActivityLearner.cs" />
     <Compile Include="Learning\ITypedActivityLearner.cs" />

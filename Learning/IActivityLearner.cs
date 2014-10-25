@@ -6,7 +6,8 @@ namespace Itera.MachineLearning.Fitness.Learning
     {
         double PredictAverageSpeedByDuration(TimeSpan duration);
         double PredictDistanceByWeekday(DateTime date);
-        TimeSpan PredictDurationByWeather(WeatherData weatherData);
         TimeSpan PredictDurationByWeekday(DateTime date);
+        double PredictDistanceByWeather(WeatherData weatherData);
+        TimeSpan PredictDurationByWeather(WeatherData weatherData);
     }
 }

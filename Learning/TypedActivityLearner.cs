@@ -58,7 +58,7 @@ namespace Itera.MachineLearning.Fitness.Learning
 
             return prediction.Type;
         }
-        private Lazy<LearningModel> activityTypeByWeekdayAndHour;
+        private readonly Lazy<LearningModel> activityTypeByWeekdayAndHour;
         private LearningModel LearnActivityTypeByWeekdayAndHour()
         {
             var descriptor = Descriptor.For<TypedActivityDescriptor>()
@@ -81,7 +81,7 @@ namespace Itera.MachineLearning.Fitness.Learning
 
             return prediction.Type;
         }
-        private Lazy<LearningModel> activityTypeByWeather;
+        private readonly Lazy<LearningModel> activityTypeByWeather;
         private LearningModel LearnActivityTypeByWeather()
         {
             var descriptor = Descriptor.For<TypedActivityDescriptor>()
@@ -103,7 +103,7 @@ namespace Itera.MachineLearning.Fitness.Learning
 
             return prediction.Distance;
         }
-        private Lazy<LearningModel> distanceByActivityType;
+        private readonly Lazy<LearningModel> distanceByActivityType;
         private LearningModel LearnDistanceByActivityType()
         {
             var descriptor = Descriptor.For<TypedActivityDescriptor>()
@@ -114,7 +114,6 @@ namespace Itera.MachineLearning.Fitness.Learning
                 descriptor,
                 activities.Where(a => a.Distance > 0).ToList());
         }
-
 
         public double PredictAverageSpeedByDurationAndType(ActivityType type, TimeSpan duration)
         {
@@ -127,7 +126,7 @@ namespace Itera.MachineLearning.Fitness.Learning
 
             return prediction.AverageSpeed;
         }
-        private Lazy<LearningModel> averageSpeedByDurationAndType;
+        private readonly Lazy<LearningModel> averageSpeedByDurationAndType;
         private LearningModel LearnAverageSpeedByDurationAndType()
         {
             var descriptor = Descriptor.For<TypedActivityDescriptor>()

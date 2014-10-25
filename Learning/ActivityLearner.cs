@@ -24,6 +24,7 @@ namespace Itera.MachineLearning.Fitness.Learning
                 trainingRepeatCount)
         {
             distanceByWeekday = new Lazy<LearningModel>(LearnDistanceByWeekday);
+            distanceByWeather = new Lazy<LearningModel>(LearnDistanceByWeather);
             durationByWeekday = new Lazy<LearningModel>(LearnDurationByWeekday);
             averageSpeedByDuration = new Lazy<LearningModel>(LearnAverageSpeedByDuration);
             durationByWeather = new Lazy<LearningModel>(LearnDurationByWeather);
@@ -59,6 +60,32 @@ namespace Itera.MachineLearning.Fitness.Learning
         {
             var descriptor = Descriptor.For<ActivityDescriptor>()
                 .WithDateTime(a => a.Time, DateTimeFeature.DayOfWeek)
+                .Learn(a => a.Distance);
+
+            return Learn(
+                descriptor,
+                activities.Where(a => a.Distance > 0).ToList());
+        }
+
+        public double PredictDistanceByWeather(WeatherData weatherData)
+        {
+            var prediction = distanceByWeather.Value.Model.Predict(
+                new TypedActivityDescriptor
+                {
+                    Wind = weatherData.Wind,
+                    Temperature = weatherData.Temperature,
+                    Percipitation = weatherData.Percipitation
+                });
+
+            return prediction.Distance;
+        }
+        private Lazy<LearningModel> distanceByWeather;
+        private LearningModel LearnDistanceByWeather()
+        {
+            var descriptor = Descriptor.For<ActivityDescriptor>()
+                .With(a => a.Wind)
+                .With(a => a.Temperature)
+                .With(a => a.Percipitation)
                 .Learn(a => a.Distance);
 
             return Learn(
