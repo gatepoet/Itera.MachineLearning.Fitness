@@ -21,6 +21,7 @@ namespace Itera.MachineLearning.Fitness.Services
     {
         public static string Oslo = "Norge/Oslo/Oslo/Oslo";
         public static string Kharkiv = "Ukraine/Kharkiv/Kharkiv";
+        public static string Vilnius = "Lithuania/Vilnius/Vilnius";
     }
     public class WeatherService
     {

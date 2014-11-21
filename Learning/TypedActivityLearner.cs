@@ -44,7 +44,9 @@ namespace Itera.MachineLearning.Fitness.Learning
                     Type = activity.Type,
                     Wind = weatherData.Wind,
                     Percipitation = weatherData.Percipitation,
-                    Temperature = weatherData.Temperature
+                    Temperature = weatherData.Temperature,
+                    Speed = activity.Speed
+
                 };
         }
 
@@ -115,7 +117,7 @@ namespace Itera.MachineLearning.Fitness.Learning
                 activities.Where(a => a.Distance > 0).ToList());
         }
 
-        public double PredictAverageSpeedByDurationAndType(ActivityType type, TimeSpan duration)
+        public ActivitySpeed PredictAverageSpeedByDurationAndType(ActivityType type, TimeSpan duration)
         {
             var prediction = averageSpeedByDurationAndType.Value.Model.Predict(
                 new TypedActivityDescriptor
@@ -124,7 +126,7 @@ namespace Itera.MachineLearning.Fitness.Learning
                     Duration = duration
                 });
 
-            return prediction.AverageSpeed;
+            return prediction.Speed;
         }
         private readonly Lazy<LearningModel> averageSpeedByDurationAndType;
         private LearningModel LearnAverageSpeedByDurationAndType()
@@ -132,7 +134,7 @@ namespace Itera.MachineLearning.Fitness.Learning
             var descriptor = Descriptor.For<TypedActivityDescriptor>()
                 .With(a => a.Type)
                 .With(a => a.Duration)
-                .Learn(a => a.AverageSpeed);
+                .Learn(a => a.Speed);
 
             return Learn(
                 descriptor,

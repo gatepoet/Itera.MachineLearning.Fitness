@@ -70,11 +70,11 @@ namespace Itera.MachineLearning.Fitness
                     "<br />" +
                     "<span><b>{0}</b></span><br />" +
                     "<span>{1:0.00}\u00A0km</span><br />" +
-                    "<span>{2:0.00}\u00A0km\u2044h</span><br />" +
+                    "<span>{2}</span><br />" +
                     "<span>{3}</span><br />",
                     hourlyExercisePlan.Activity,
                     hourlyExercisePlan.Distance,
-                    hourlyExercisePlan.AverageSpeed,
+                    hourlyExercisePlan.Speed,
                     string.Join(", ", hourlyExercisePlan.Hours.Select(h => h.ToString() + ":00")));
             }
 

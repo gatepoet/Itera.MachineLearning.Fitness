@@ -72,7 +72,7 @@ namespace Itera.MachineLearning.Fitness
                         Activity = g.Key,
                         Hours = g.Select(t => t.Hour),
                         Distance = dist,
-                        AverageSpeed = typedLearner.PredictAverageSpeedByDurationAndType(g.Key, duration)
+                        Speed = typedLearner.PredictAverageSpeedByDurationAndType(g.Key, duration)
                     };
                 });
             return types;
@@ -96,5 +96,6 @@ namespace Itera.MachineLearning.Fitness
         public IEnumerable<int> Hours { get; set; }
         public double Distance { get; set; }
         public double AverageSpeed { get; set; }
+        public ActivitySpeed Speed { get; set; }
     }
 }

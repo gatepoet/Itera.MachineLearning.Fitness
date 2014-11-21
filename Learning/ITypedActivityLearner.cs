@@ -6,7 +6,7 @@ namespace Itera.MachineLearning.Fitness.Learning
     {
         ActivityType PredictActivityTypeByWeather(WeatherData weatherData);
         ActivityType PredictActivityTypeByWeekdayAndHour(DateTime time);
-        double PredictAverageSpeedByDurationAndType(ActivityType type, TimeSpan duration);
+        ActivitySpeed PredictAverageSpeedByDurationAndType(ActivityType type, TimeSpan duration);
         double PredictDistanceByActivityType(ActivityType type);
     }
 }

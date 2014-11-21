@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Linq;
+using Itera.MachineLearning.Fitness.Learning;
 using numl.Math.LinearAlgebra;
 using GPXLib;
 
@@ -97,11 +98,22 @@ namespace Itera.MachineLearning.Fitness.Services
                 Type = type,
                 Distance = distance,
                 Duration = GetDuration(arr[4]),
-                AverageSpeed = avgSpeed
-
+                AverageSpeed = avgSpeed,
+                Speed = GetSpeed(avgSpeed)
             };
         }
 
+        private ActivitySpeed GetSpeed(double averageSpeed)
+        {
+            if (averageSpeed < 10 && averageSpeed > 0)
+                return ActivitySpeed.Comfortable;
+            if (averageSpeed > 10 && averageSpeed < 18)
+                return ActivitySpeed.Medium;
+            if (averageSpeed > 18)
+                return ActivitySpeed.Intense;
+
+            return ActivitySpeed.None;
+        }
         private static double GetAverageSpeed(double a)
         {
             var avgSpeed = a;
@@ -193,7 +205,8 @@ namespace Itera.MachineLearning.Fitness.Services
                 Type = type,
                 Distance = distance/1000.0,
                 Duration = duration,
-                AverageSpeed = avgSpeed
+                AverageSpeed = avgSpeed,
+                Speed = GetSpeed(avgSpeed)
             };
         }
 
