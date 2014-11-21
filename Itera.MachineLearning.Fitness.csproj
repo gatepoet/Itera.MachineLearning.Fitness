@@ -73,6 +73,7 @@
     <Compile Include="Learning\ActivityDescriptor.cs" />
     <Compile Include="Services\Activity.cs" />
     <Compile Include="Services\ActivityType.cs" />
+    <Compile Include="Services\DynamicCalendarData.cs" />
     <Compile Include="Services\FitnessService.cs" />
     <Compile Include="Services\WeatherData.cs" />
     <Compile Include="Services\WeatherForecast\ForecastService.cs" />
